@@ -13,12 +13,13 @@ if not defined OHOS_ABI (
 
 set PWD=%cd%
 
-set CMAKE_EXE=%OHOS_SDK%\native\build-tools\cmake\bin\cmake.exe
+@REM set CMAKE_EXE=%OHOS_SDK%\native\build-tools\cmake\bin\cmake.exe
+set CMAKE_EXE=cmake
 set CMAKE_TOOLCHAIN_FILE=%OHOS_SDK%\native\build\cmake\ohos.toolchain.cmake
 
 @REM 安装目录
-set INSTALL_DIR=%PWD%\out\install\%OHOS_ABI%\Boost
-set BUILD_DIR=%PWD%\out\build\%OHOS_ABI%\Boost
+set INSTALL_DIR=%PWD%\out\install\%OHOS_ABI%\Opencc
+set BUILD_DIR=%PWD%\out\build\%OHOS_ABI%\Opencc
 
 @REM 删除构建目录和安装目录
 if exist %INSTALL_DIR% (
@@ -28,7 +29,7 @@ if exist %BUILD_DIR% (
     rmdir /s /q %BUILD_DIR%
 )
 
-cd deps/boost
+cd deps/opencc
 
 %CMAKE_EXE% -G "Ninja" ^
     -B%BUILD_DIR% ^
